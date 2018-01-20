@@ -13,14 +13,14 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     justifyContent: 'center',
   },
-  MetaContainer: {
-    flex: 1,
-    alignSelf: 'stretch',
-  },
   AvatarImage: {
     height: 40,
     width: 40,
     borderRadius: 20,
+  },
+  MetaContainer: {
+    flex: 1,
+    alignSelf: 'stretch',
   },
   MetaTopContainer: {
     flex: 1,

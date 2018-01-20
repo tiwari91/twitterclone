@@ -12,7 +12,12 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 10,
     backgroundColor: '#ffffff',
-    marginVertical: 5,
+    // marginVertical: 5,
+    // borderRadius: 1,
+    // borderWidth: 0.5,
+    // borderColor: '#CAD0D6',
+    borderBottomColor: '#bbb',
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   CardContentContainer: {
     flex: 1,
