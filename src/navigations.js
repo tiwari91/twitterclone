@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
+import { Keyboard } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
 import HomeScreen from './screens/HomeScreen';
 import ExploreScreen from './screens/ExploreScreen';
 import NotificationsScreen from './screens/NotificationsScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import TweetScreen from './screens/TweetScreen';
+
+import HeaderAvatar from './components/HeaderAvatar';
+import HeaderBtnTweet from './components/HeaderBtnTweet';
 
 const TAB_ICON_SIZE = 20;
 
@@ -66,10 +71,42 @@ const Tabs = TabNavigator(
   },
 );
 
+const TweetModalScreen = StackNavigator(
+  {
+    TweetScreen: {
+      screen: TweetScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: <HeaderAvatar />,
+        headerRight: (
+          <HeaderBtnTweet
+            side="right"
+            onPress={() => {
+              Keyboard.dismiss();
+              navigation.goBack(null);
+            }}
+           />
+        ),
+      }),
+    },
+  },
+  {
+    headerMode: 'none',
+  },
+);
+
 const AppMainNav = StackNavigator(
   {
     Home: {
       screen: Tabs,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: <HeaderAvatar />,
+        headerRight: (
+          <HeaderBtnTweet onPress={() => navigation.navigate('TweetScreen')} />
+        ),
+      }),
+    },
+    TweetScreen: {
+      screen: TweetModalScreen,
     },
   },
   {
